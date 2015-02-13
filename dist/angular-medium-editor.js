@@ -39,6 +39,10 @@ angular.module('angular-medium-editor', [])
             opts.placeholder = '';
           }
           ctrl.editor = new MediumEditor(iElement, opts);
+          iElement.mediumInsert({
+              editor: ctrl.editor 
+          });
+
         });
 
         var onChange = function() {
@@ -50,6 +54,9 @@ angular.module('angular-medium-editor', [])
             if (iElement.html() === '<p><br></p>' || iElement.html() === '') {
               opts.placeholder = placeholder;
               var editor = new MediumEditor(iElement, opts);
+              iElement.mediumInsert({
+                  editor: editor
+              });
             }
 
             ctrl.$setViewValue(iElement.html());
@@ -70,6 +77,9 @@ angular.module('angular-medium-editor', [])
             }
 
             this.editor = new MediumEditor(iElement, opts);
+            iElement.mediumInsert({
+              editor: this.editor
+            });
           }
 
           iElement.html(ctrl.$isEmpty(ctrl.$viewValue) ? '' : ctrl.$viewValue);
